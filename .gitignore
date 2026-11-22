@@ -1,0 +1,15 @@
+# Local tooling and editor files
+.claude/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+
+# Wrangler local state
+.wrangler/
+node_modules/
+
+# Archives and drafts
+*.zip
