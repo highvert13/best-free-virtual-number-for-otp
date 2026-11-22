@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 520" width="440" height="520" font-family="Inter, system-ui, sans-serif">
+  <rect x="70" y="10" width="300" height="500" rx="40" fill="#080808"/>
+  <rect x="84" y="24" width="272" height="472" rx="28" fill="#ffffff"/>
+  <rect x="180" y="36" width="80" height="8" rx="4" fill="#d8d8d8"/>
+  <text x="108" y="84" font-size="13" font-weight="500" fill="#5a5a5a" letter-spacing="1.2">MESSAGES</text>
+  <text x="108" y="110" font-size="20" font-weight="600" fill="#080808">+1 (415) 555-0142</text>
+  <text x="108" y="132" font-size="13" fill="#898989">Virtual number · US</text>
+
+  <rect x="104" y="156" width="232" height="92" rx="10" fill="#ffffff" stroke="#d8d8d8"/>
+  <rect x="104" y="156" width="6" height="92" rx="3" fill="#3b89ff"/>
+  <text x="124" y="182" font-size="13" font-weight="600" fill="#080808">Telegram</text>
+  <text x="124" y="204" font-size="13" fill="#363636">Login code:</text>
+  <text x="124" y="232" font-size="24" font-weight="600" fill="#080808" letter-spacing="4">48213</text>
+  <circle cx="316" cy="178" r="5" fill="#00d722"/>
+
+  <rect x="104" y="262" width="232" height="92" rx="10" fill="#ffffff" stroke="#d8d8d8"/>
+  <rect x="104" y="262" width="6" height="92" rx="3" fill="#ff6b00"/>
+  <text x="124" y="288" font-size="13" font-weight="600" fill="#080808">Google</text>
+  <text x="124" y="310" font-size="13" fill="#363636">G- verification code</text>
+  <text x="124" y="338" font-size="24" font-weight="600" fill="#080808" letter-spacing="4">730 516</text>
+  <circle cx="316" cy="284" r="5" fill="#00d722"/>
+
+  <rect x="104" y="368" width="232" height="92" rx="10" fill="#f7f7f7" stroke="#d8d8d8" stroke-dasharray="4 4"/>
+  <rect x="104" y="368" width="6" height="92" rx="3" fill="#00d722"/>
+  <text x="124" y="394" font-size="13" font-weight="600" fill="#080808">WhatsApp</text>
+  <text x="124" y="416" font-size="13" fill="#363636">Waiting for code…</text>
+  <text x="124" y="442" font-size="13" font-weight="500" fill="#ee1d36">VoIP number rejected</text>
+  <circle cx="316" cy="390" r="5" fill="#ee1d36"/>
+</svg>
