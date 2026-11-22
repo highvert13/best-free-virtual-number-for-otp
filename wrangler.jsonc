@@ -1,0 +1,10 @@
+{
+  // Cloudflare Workers static site. Deploy command in Cloudflare: npx wrangler deploy
+  "name": "best-free-virtual-number-for-otp",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./site",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

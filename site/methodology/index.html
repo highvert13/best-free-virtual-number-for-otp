@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How We Test Free Virtual Numbers for OTP | OTP Number Lab</title>
+<meta name="description" content="Our monthly test protocol: how we request OTP codes from Telegram, WhatsApp and Google, how scores are calculated and what changed in the ranking.">
+<link rel="canonical" href="https://example.com/methodology/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0b0b0f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How We Test Free Virtual Numbers for OTP | OTP Number Lab">
+<meta property="og:description" content="Our monthly test protocol: how we request OTP codes from Telegram, WhatsApp and Google, how scores are calculated and what changed in the ranking.">
+<meta property="og:url" content="https://example.com/methodology/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="/assets/css/main.css?v=2026112202">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://example.com/#org",
+      "name": "OTP Number Lab",
+      "url": "https://example.com/"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com/#website",
+      "url": "https://example.com/",
+      "name": "OTP Number Lab",
+      "publisher": {
+        "@id": "https://example.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://example.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "How We Test",
+          "item": "https://example.com/methodology/"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "url": "https://example.com/methodology/",
+      "isPartOf": {
+        "@id": "https://example.com/#website"
+      },
+      "dateModified": "2026-11-22",
+      "headline": "How We Test Free Virtual Numbers",
+      "datePublished": "2026-11-22",
+      "author": {
+        "@type": "Person",
+        "name": "Alex Morgan",
+        "url": "https://example.com/about/"
+      },
+      "publisher": {
+        "@id": "https://example.com/#org"
+      },
+      "mainEntityOfPage": "https://example.com/methodology/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="logo" href="/" aria-label="OTP Number Lab home">
+      <span class="logo-mark" aria-hidden="true"></span>OTP Number <span class="logo-accent">Lab</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="/#ranking">Best Free Numbers</a></li>
+        <li class="has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">Platforms</button>
+          <ul class="dropdown">
+            <li><a href="/free-virtual-number-for-telegram/">Telegram</a></li>
+            <li><a href="/free-virtual-number-for-whatsapp/">WhatsApp</a></li>
+            <li><a href="/free-virtual-number-for-google-verification/">Google</a></li>
+          </ul>
+        </li>
+        <li class="has-dropdown">
+          <button class="nav-link dropdown-toggle" type="button" aria-expanded="false">Countries</button>
+          <ul class="dropdown">
+            <li><a href="/free-us-virtual-number/">USA</a></li>
+            <li><a href="/free-canada-virtual-number/">Canada</a></li>
+            <li><a href="/free-uk-virtual-number/">United Kingdom</a></li>
+            <li><a href="/free-australia-virtual-number/">Australia</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link" href="/methodology/" aria-current="page">How We Test</a></li>
+      </ul>
+      <a class="btn btn-outline-gold nav-cta" href="/#ranking">See the ranking</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><span aria-current="page">How We Test</span></li>
+    </ol>
+  </div>
+</nav>
+
+<main id="main">
+  <header class="page-header">
+    <div class="container">
+      <h1>How We Test Free Virtual Numbers</h1>
+      <p class="lead">Every number in our ranking is tested by hand, every month, on Telegram, WhatsApp and Google. Here is exactly how.</p>
+      <p class="page-meta">Last updated: <time datetime="2026-11-22">November 22, 2026</time></p>
+    </div>
+  </header>
+  <div class="page-body">
+    <div class="container with-toc">
+      <nav class="toc" aria-label="Contents"><p class="toc-title">Contents</p><ol><li><a href="#protocol">Test protocol</a></li><li><a href="#score">How the score works</a></li><li><a href="#labels">Status labels</a></li><li><a href="#what-we-dont-do">What we do not do</a></li><li><a href="#free-first">Free first, paid second</a></li><li><a href="#changelog">Ranking changelog</a></li><li><a href="#report">Report an error</a></li></ol></nav>
+      <article class="legal">
+        <h2 id="protocol">Our test protocol</h2>
+        <p>Every month we test each service in our ranking from scratch. For every service we request <strong>10 verification codes per platform</strong> from Telegram, WhatsApp and Google, using numbers from each country the service offers: the US, Canada, the UK and Australia. A request counts as a success when the code arrives within 5 minutes and can be entered.</p>
+        <p>We use fresh test accounts on real phones and browsers, and delete them after the test. Each cycle takes about two weeks; the date of the last test is shown next to every service.</p>
+
+        <h2 id="score">How the score is calculated</h2>
+        <p>The score out of 10 combines four criteria. OTP delivery has the biggest weight because it is what most people need.</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Criterion</th><th scope="col">Weight</th><th scope="col">What we measure</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">OTP delivery</th><td>40%</td><td>Share of the 30 code requests (10 per platform) that succeeded</td></tr>
+              <tr><th scope="row">Privacy</th><td>20%</td><td>Whether the number is private to you or visible to everyone</td></tr>
+              <tr><th scope="row">Ease of use</th><td>20%</td><td>Signup steps, ads, keep-alive rules, how fast you get a number</td></tr>
+              <tr><th scope="row">Country coverage</th><td>20%</td><td>Numbers available in the US, Canada, the UK and Australia</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Each criterion is rated from 0 to 10, multiplied by its weight and added up. Two services with similar delivery can end up with different scores if one shows your messages to everyone or covers only one country.</p>
+
+        <h2 id="labels">Status labels</h2>
+        <ul>
+          <li><span class="status s-works">Works</span> 7 or more of 10 codes received on that platform.</li>
+          <li><span class="status s-sometimes">Sometimes</span> 3 to 6 of 10 codes received.</li>
+          <li><span class="status s-fails">Fails</span> 0 to 2 of 10 codes received.</li>
+        </ul>
+
+        <h2 id="what-we-dont-do">What we do not do</h2>
+        <p>We do not try to get around platform anti-fraud checks, we do not create accounts in bulk and we do not publish methods for doing so. We only test what an ordinary person can do with each service.</p>
+
+        <h2 id="free-first">Free first, paid second</h2>
+        <p>Our ranking lists free services first, because that is what most people look for. Paid services are scored with the same tests and listed after them as fallbacks. Business relationships never change the order of free services. See our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
+
+        <h2 id="changelog">Ranking changelog</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">Date</th><th scope="col">Change</th></tr></thead>
+            <tbody>
+              <tr><td><time datetime="2026-11-22">Nov 22, 2026</time></td><td>First published ranking: 12 services tested across Telegram, WhatsApp and Google in 4 countries.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="report">Suggest a service or report an error</h2>
+        <p>Did a number stop working, or should we test a new service? <a href="/contact/">Contact us</a> and choose "Correction" or "Suggest a service".</p>
+      </article>
+    </div>
+  </div>
+</main>
+
+<!-- ============ FOOTER (no links that are already in the main menu) ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <p class="logo"><span class="logo-mark" aria-hidden="true"></span>OTP Number <span class="logo-accent">Lab</span></p>
+        <p>Independent monthly tests of free virtual numbers for OTP in the US, Canada, UK and Australia.</p>
+        <p class="footer-note">Use virtual numbers responsibly.</p>
+      </div>
+      <nav aria-label="Guides on this site">
+        <p class="footer-title">Learn</p>
+        <ul>
+          <li><a href="/#public-vs-private">Public vs private numbers</a></li>
+          <li><a href="/#how-to">How to receive an OTP</a></li>
+          <li><a href="/#troubleshooting">OTP not arriving</a></li>
+          <li><a href="/#safety">Is it safe?</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Trust">
+        <p class="footer-title">Trust</p>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Use</a></li>
+          <li><a href="/affiliate-disclosure/">Affiliate Disclosure</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer-legal">© 2026 OTP Number Lab. We are not affiliated with Telegram, WhatsApp, Meta or Google. All trademarks belong to their owners.</p>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <p>We use analytics cookies to see which rankings are useful. They load only if you accept. <a href="/privacy-policy/">Privacy Policy</a></p>
+  <div class="cookie-actions">
+    <button class="btn btn-secondary btn-sm" type="button" data-consent="declined">Decline</button>
+    <button class="btn btn-primary btn-sm" type="button" data-consent="accepted">Accept</button>
+  </div>
+</div>
+
+<script src="/assets/js/main.js?v=2026112202" defer></script>
+</body>
+</html>
