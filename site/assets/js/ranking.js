@@ -42,7 +42,7 @@
 
   function matches(row) {
     if (state.type !== 'all' && row.dataset.type !== state.type) return false;
-    if (state.country !== 'all' && row.dataset.countries.split(' ').indexOf(state.country) === -1) return false;
+    if (state.country !== 'all' && (row.dataset.countries || '').split(' ').indexOf(state.country) === -1) return false;
     if (state.platform !== 'all' && row.dataset[state.platform] === 'fails') return false;
     return true;
   }
@@ -98,22 +98,6 @@
       render();
     });
   });
-
-  /* Number finder: sets the same hash the filters use, e.g. #ranking?platform=whatsapp&country=uk */
-  var finder = document.getElementById('finder-form');
-  if (finder) {
-    finder.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var parts = [];
-      ['platform', 'country'].forEach(function (k) {
-        var v = finder.elements[k].value;
-        if (v !== 'all') parts.push(k + '=' + encodeURIComponent(v));
-      });
-      var hash = '#ranking' + (parts.length ? '?' + parts.join('&') : '');
-      if (window.location.hash === hash) applyHash();
-      else window.location.hash = hash;
-    });
-  }
 
   function applyHash() {
     state.platform = 'all'; state.country = 'all'; state.type = 'all';
