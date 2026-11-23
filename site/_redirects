@@ -1,0 +1,21 @@
+# Retired pages -> closest section of the current site (301 = permanent).
+# Cloudflare Workers static assets apply this file automatically.
+
+/free-virtual-number-for-telegram/ /#platforms 301
+/free-virtual-number-for-telegram /#platforms 301
+/free-virtual-number-for-whatsapp/ /#platforms 301
+/free-virtual-number-for-whatsapp /#platforms 301
+/free-virtual-number-for-google-verification/ /#platforms 301
+/free-virtual-number-for-google-verification /#platforms 301
+
+/free-us-virtual-number/ /#countries 301
+/free-us-virtual-number /#countries 301
+/free-canada-virtual-number/ /#countries 301
+/free-canada-virtual-number /#countries 301
+/free-uk-virtual-number/ /#countries 301
+/free-uk-virtual-number /#countries 301
+/free-australia-virtual-number/ /#countries 301
+/free-australia-virtual-number /#countries 301
+
+/affiliate-disclosure/ /about/ 301
+/affiliate-disclosure /about/ 301
