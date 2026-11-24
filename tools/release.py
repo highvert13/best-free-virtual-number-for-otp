@@ -43,23 +43,23 @@ def main():
         if not args.keep_banner:
             new = BANNER_RE.sub("", new)
         if new != text:
-            path.write_text(new, encoding="utf-8")
+            path.write_text(new, encoding="utf-8", newline="\n")
             changed += 1
     print(f"Updated {changed} files")
 
     conf_path = ROOT / "data" / "site.json"
     conf = json.loads(conf_path.read_text(encoding="utf-8-sig"))
     conf["domain"] = domain
-    conf_path.write_text(json.dumps(conf, indent=2) + "\n", encoding="utf-8")
+    conf_path.write_text(json.dumps(conf, indent=2) + "\n", encoding="utf-8", newline="\n")
 
     if not args.keep_banner:
         data_path = ROOT / "data" / "ranking.json"
         data = data_path.read_text(encoding="utf-8")
-        data_path.write_text(data.replace('"sample_data": true', '"sample_data": false'), encoding="utf-8")
+        data_path.write_text(data.replace('"sample_data": true', '"sample_data": false'), encoding="utf-8", newline="\n")
 
     headers = SITE / "_headers"
     lines = headers.read_text(encoding="utf-8").splitlines(keepends=True)
-    headers.write_text("".join(l for l in lines if "X-Robots-Tag" not in l), encoding="utf-8")
+    headers.write_text("".join(l for l in lines if "X-Robots-Tag" not in l), encoding="utf-8", newline="\n")
     print("Removed X-Robots-Tag: noindex from site/_headers")
     leftovers = [str(p.relative_to(ROOT)) for p in SITE.rglob("*.html")
                  if 'data-domain="example.com"' in p.read_text(encoding="utf-8")]

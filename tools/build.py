@@ -375,7 +375,7 @@ def section(sid, eyebrow, h2, body, soft=False, narrow=True):
 def write(path, content):
     out = SITE / path.strip("/") / "index.html" if path != "/404.html" else SITE / "404.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(content, encoding="utf-8")
+    out.write_text(content, encoding="utf-8", newline="\n")
     print("wrote", out.relative_to(ROOT))
 
 
@@ -566,8 +566,8 @@ def build_sitemap():
     urls = "\n".join(f"  <url><loc>{DOMAIN}{p}</loc><lastmod>{DATA['updated']}</lastmod></url>" for p in SITEMAP_PATHS)
     (SITE / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n',
-        encoding="utf-8")
-    (SITE / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n", encoding="utf-8")
+        encoding="utf-8", newline="\n")
+    (SITE / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n", encoding="utf-8", newline="\n")
     print("wrote site/sitemap.xml, site/robots.txt")
 
 

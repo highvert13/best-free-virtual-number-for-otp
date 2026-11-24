@@ -466,7 +466,7 @@ def inject_home(b):
         if not pattern.search(s):
             raise SystemExit(f"Marker AUTO:{name} not found in site/index.html")
         s = pattern.sub(lambda m: m.group(1) + "\n" + html_block + "\n" + m.group(2), s)
-    path.write_text(s, encoding="utf-8")
+    path.write_text(s, encoding="utf-8", newline="\n")
     print("updated home blocks in site/index.html")
 
 

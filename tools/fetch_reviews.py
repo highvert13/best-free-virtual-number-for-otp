@@ -149,7 +149,7 @@ def main():
         print(f"{app['name']}: {apps[-1]['reviews_30d']} reviews, {apps[-1]['verify_mentions_30d']} mention codes")
     OUT.write_text(json.dumps({"updated": today.isoformat(), "window_days": WINDOW_DAYS,
                                "stores": list(STORES.values()), "apps": apps}, ensure_ascii=False, indent=2) + "\n",
-                   encoding="utf-8")
+                   encoding="utf-8", newline="\n")
     print("wrote", OUT.relative_to(ROOT))
 
 
