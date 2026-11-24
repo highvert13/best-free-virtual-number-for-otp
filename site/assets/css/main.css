@@ -361,6 +361,18 @@ tbody th .tag { display: flex; width: max-content; margin-top: 7px; padding: 5px
   .report-table td::after { content: attr(data-label); font: 500 10px/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); }
 }
 
+/* ---------- Alternatives list (fix articles) ---------- */
+.alt-list { display: grid; gap: 14px; margin-top: 20px; }
+.alt-card { padding: 20px 22px; }
+.alt-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 10px; }
+.alt-head h3 { margin: 0; font-size: 21px; font-weight: 700; color: var(--gold-2); }
+.alt-card.is-featured .rank { background: var(--gold-grad); color: #1a1205; }
+.alt-card p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
+.alt-statuses { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-bottom: 14px; font-size: 14px; }
+.alt-status { display: inline-flex; align-items: center; gap: 8px; }
+.alt-platform { font: 500 10.5px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2); }
+.alt-card .btn { margin-top: 2px; }
+
 /* ---------- Blog ---------- */
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
 .chips[hidden] { display: none; }

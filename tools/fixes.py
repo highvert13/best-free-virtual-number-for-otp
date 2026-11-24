@@ -62,6 +62,12 @@ ARTICLES = [
             ("Does TextNow work for Google verification?", "Usually yes. In our tests Google accepted TextNow numbers in most attempts. Telegram accepted them about half the time, and WhatsApp rejected them."),
             ("Can I get a new TextNow number if mine is blocked?", "Yes. You can change your number in the app settings. A new number has no history, so it is sometimes accepted where the old one was not."),
         ],
+        "alternatives": [
+            ("smsfast", "Online number service with private numbers in the US, Canada, the UK and Australia. The only option in our ranking that passed Telegram, WhatsApp and Google."),
+            ("google-voice", "Free US number from Google. Accepted by Google every time, but you need an existing US number to set it up."),
+            ("talkatone", "Free US and Canadian app number with an email signup. Make a call or send a text every 30 days to keep it."),
+            ("textfree", "Free US app number. Passed some Google checks; Telegram and WhatsApp refused it."),
+        ],
         "related": ["google-voice-not-receiving-verification-codes", "whatsapp-not-sending-verification-code", "google-phone-number-cannot-be-used-for-verification"],
     },
     {
@@ -245,6 +251,35 @@ def reviews_source_note():
 # --------------------------------------------------------------------------
 # Pages
 # --------------------------------------------------------------------------
+ALT_LINKS = {"smsfast": "https://smsfast.com/"}   # the only external links on the site
+
+
+def alternatives_section(a, b):
+    alts = a.get("alternatives")
+    if not alts:
+        return ""
+    cards = []
+    for i, (sid, why) in enumerate(alts, 1):
+        s = b.BY_ID[sid]
+        chips = "".join(f'<span class="alt-status"><span class="alt-platform">{p}</span>{b.status(s[k])}</span>'
+                        for k, p in (("telegram", "Telegram"), ("whatsapp", "WhatsApp"), ("google", "Google")))
+        btn = ""
+        if sid in ALT_LINKS:
+            btn = (f'<a class="btn btn-primary btn-sm" href="{ALT_LINKS[sid]}" rel="noopener" target="_blank">'
+                   f'Get a number <span class="ext" aria-hidden="true">↗</span></a>')
+        featured = " is-featured" if i == 1 else ""
+        cards.append(f"""      <article class="card card-feature alt-card{featured}">
+        <div class="alt-head"><span class="rank">{i}</span><h3>{s['name']}</h3><span class="tag">{b.TYPE_LABEL[s['type']]}</span></div>
+        <p>{why}</p>
+        <div class="alt-statuses">{chips}</div>
+        {btn}
+      </article>""")
+    name = a["label"]
+    return b.section("alternatives", "Alternatives", f"Alternatives to {name} for Verification Codes",
+                     f"    <p>If {name} keeps failing for one service, use a different number for that account. These options worked best in our <a href=\"/#ranking\">ranking</a>:</p>\n"
+                     + '    <div class="alt-list">\n' + "\n".join(cards) + "\n    </div>")
+
+
 def build_article(a, b):
     path = f"/blog/{a['slug']}/"
     cause_rows = "\n".join(f"          <tr><th scope=\"row\">{c}</th><td>{s}</td><td>{f}</td></tr>" for c, s, f in a["causes"])
@@ -301,9 +336,11 @@ def build_article(a, b):
 
 {b.section("fix", "Step by step", "How to Fix It", "    " + b.steps(a["steps"]), soft=True)}
 
-{b.section("avoid", "Avoid", "What Not to Do", f'    <ul class="avoid-list">{dont}</ul>')}
+{alternatives_section(a, b)}
 
-{report}
+{b.section("avoid", "Avoid", "What Not to Do", f'    <ul class="avoid-list">{dont}</ul>', soft=bool(a.get("alternatives")))}
+
+{report.replace('class="band band-soft" id="user-reports"', 'class="band" id="user-reports"') if a.get("alternatives") else report}
 
 {b.faq_block("Questions People Ask", a["faqs"])}
 
