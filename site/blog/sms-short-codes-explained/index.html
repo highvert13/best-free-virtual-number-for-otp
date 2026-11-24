@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMS Short Codes: Why Some Codes Never Reach Virtual Numbers</title>
+<meta name="description" content="Many verification codes are sent from 5- or 6-digit short codes. Learn what short codes are, why they often fail on virtual and foreign numbers, and what to try instead.">
+<link rel="canonical" href="https://example.com/blog/sms-short-codes-explained/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0b0b0f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SMS Short Codes: Why Some Codes Never Reach Virtual Numbers">
+<meta property="og:description" content="Many verification codes are sent from 5- or 6-digit short codes. Learn what short codes are, why they often fail on virtual and foreign numbers, and what to try instead.">
+<meta property="og:url" content="https://example.com/blog/sms-short-codes-explained/">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="/assets/css/main.css?v=2026112402">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://example.com/#org",
+      "name": "OTP Number Lab",
+      "url": "https://example.com/"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://example.com/#website",
+      "url": "https://example.com/",
+      "name": "OTP Number Lab",
+      "publisher": {
+        "@id": "https://example.com/#org"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://example.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://example.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Short codes",
+          "item": "https://example.com/blog/sms-short-codes-explained/"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "url": "https://example.com/blog/sms-short-codes-explained/",
+      "isPartOf": {
+        "@id": "https://example.com/#website"
+      },
+      "dateModified": "2026-11-23",
+      "headline": "SMS Short Codes: Why Some Verification Codes Never Reach Virtual Numbers",
+      "datePublished": "2026-11-24",
+      "author": {
+        "@id": "https://example.com/#org"
+      },
+      "publisher": {
+        "@id": "https://example.com/#org"
+      },
+      "mainEntityOfPage": "https://example.com/blog/sms-short-codes-explained/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can Google Voice receive short codes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Often not. Many short-code senders do not deliver to Google Voice, which is a common reason codes from banks never arrive there."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do I get normal texts but not verification codes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Normal texts come from regular numbers. Verification codes often come from short codes, which use different routes that many virtual numbers do not receive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a short code reach a number in another country?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Short codes work inside one country only."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="logo" href="/" aria-label="OTP Number Lab home">
+      <span class="logo-mark" aria-hidden="true"></span>OTP Number <span class="logo-accent">Lab</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bar" aria-hidden="true"></span>
+      <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="/#ranking">Best Free Numbers</a></li>
+        <li><a class="nav-link" href="/blog/" aria-current="page">Blog</a></li>
+        <li><a class="nav-link" href="/user-reports/">User Reports</a></li>
+        <li><a class="nav-link" href="/methodology/">How We Test</a></li>
+      </ul>
+      <a class="btn btn-outline-gold nav-cta" href="/#ranking">See the ranking</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <div class="container">
+    <ol>
+      <li><a href="/">Home</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><span aria-current="page">Short codes</span></li>
+    </ol>
+  </div>
+</nav>
+<main id="main">
+  <header class="page-header accent-blue">
+    <div class="container">
+      <p class="eyebrow">How it works · Nov 24, 2026 · 2 min read</p>
+      <h1>SMS Short Codes: Why Some Verification Codes Never Reach Virtual Numbers</h1>
+      <div class="answer-box">
+        <p class="answer-label">Short answer</p>
+        <p>A short code is a 5- or 6-digit number that companies use to send text messages in bulk, including verification codes. Short-code messages travel over carrier routes that many virtual number apps do not receive, and they only work inside one country, so codes sent this way often never arrive on a VoIP or foreign number.</p>
+      </div>
+    </div>
+  </header>
+
+<section class="band" id="what-it-is" aria-labelledby="what-it-is-title">
+  <div class="container container-narrow">
+    <p class="eyebrow">How it works</p>
+    <h2 id="what-it-is-title">The basics</h2>
+    <p>When a bank, retailer or app texts you a code from a number like <code>32665</code> or <code>227898</code>, that sender is a <strong>short code</strong>. In the US, short codes are leased through a central registry and approved by each mobile carrier before use. Companies like them because they can send large volumes of messages quickly and reliably to normal mobile phones.</p>
+  </div>
+</section>
+<section class="band band-soft" id="why-fail" aria-labelledby="why-fail-title">
+  <div class="container container-narrow">
+    <p class="eyebrow">How it works</p>
+    <h2 id="why-fail-title">Why they fail</h2>
+    <p>Short codes were built for mobile carrier networks. Delivery depends on agreements between the sender's provider and each carrier, and many internet number providers are not part of those routes. The result: the message is accepted by the sender, then silently dropped before it reaches a VoIP number.</p>
+    <p>Short codes are also national. A US short code cannot reach a UK or Australian number, so a service that only sends codes by US short code cannot verify a foreign number at all.</p>
+    <div class="table-wrap">
+      <table class="compare-table">
+        <thead><tr><th scope="col">Sender type</th><th scope="col">Looks like</th><th scope="col">Reaches virtual numbers?</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Short code</th><td>5–6 digits</td><td>Often not</td></tr>
+          <tr><th scope="row">Long code</th><td>A normal phone number</td><td>Usually, if the app accepts VoIP</td></tr>
+          <tr><th scope="row">Toll-free number</th><td>+1 800, 888, 877…</td><td>Varies by provider</td></tr>
+          <tr><th scope="row">Voice call</th><td>An automated call</td><td>Usually</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<section class="band" id="signs" aria-labelledby="signs-title">
+  <div class="container container-narrow">
+    <p class="eyebrow">How it works</p>
+    <h2 id="signs-title">How to recognise it</h2>
+    <ul>
+      <li>Normal texts from friends arrive on the number, but codes from one particular company never do.</li>
+      <li>The same service sends codes fine to your mobile number.</li>
+      <li>Past messages from that company in your mobile inbox came from a 5- or 6-digit sender.</li>
+    </ul>
+  </div>
+</section>
+<section class="band band-soft" id="what-to-do" aria-labelledby="what-to-do-title">
+  <div class="container container-narrow">
+    <p class="eyebrow">How it works</p>
+    <h2 id="what-to-do-title">What to try</h2>
+    <ul>
+      <li><strong>Ask for a voice call</strong> if the service offers one.</li>
+      <li><strong>Use email or an authenticator app</strong> where the service allows it instead of SMS.</li>
+      <li><strong>Use a number in the same country</strong> as the service sending the code.</li>
+      <li><strong>Pick a different number</strong> for that service from our <a href="/#ranking">ranking</a> if it keeps failing.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band" id="faq" aria-labelledby="faq-title">
+  <div class="container container-narrow">
+    <p class="eyebrow">FAQ</p>
+    <h2 id="faq-title">Questions People Ask</h2>
+    <div class="faq">
+      <details>
+        <summary>Can Google Voice receive short codes?</summary>
+        <p>Often not. Many short-code senders do not deliver to Google Voice, which is a common reason codes from banks never arrive there.</p>
+      </details>
+      <details>
+        <summary>Why do I get normal texts but not verification codes?</summary>
+        <p>Normal texts come from regular numbers. Verification codes often come from short codes, which use different routes that many virtual numbers do not receive.</p>
+      </details>
+      <details>
+        <summary>Can a short code reach a number in another country?</summary>
+        <p>No. Short codes work inside one country only.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band band-soft" aria-labelledby="related-title">
+  <div class="container">
+    <p class="eyebrow">Keep exploring</p>
+    <h2 id="related-title">Related Articles</h2>
+    <div class="grid grid-3">
+      <a class="card category-card cat-blue" href="/blog/what-is-a-voip-number/">
+        <p class="eyebrow-sm">How it works</p>
+        <h3>What Is a VoIP Number, and Why Do So Many Apps Block It?</h3>
+        <p>What makes a number "VoIP", how apps find out, and why so many of them refuse these numbers.</p>
+        <span class="link-arrow">Read article</span>
+      </a>
+      <a class="card category-card cat-orange" href="/blog/google-voice-not-receiving-verification-codes/">
+        <p class="eyebrow-sm">Fixes</p>
+        <h3>Google Voice Not Receiving Verification Codes</h3>
+        <p>Short codes, VoIP checks and account limits that stop Google Voice from receiving codes.</p>
+        <span class="link-arrow">Read article</span>
+      </a>
+      <a class="card category-card cat-orange" href="/blog/textnow-not-receiving-verification-codes/">
+        <p class="eyebrow-sm">Fixes</p>
+        <h3>TextNow Not Receiving Verification Codes</h3>
+        <p>Why TextNow numbers miss codes from Google, Telegram and WhatsApp, and what to try first.</p>
+        <span class="link-arrow">Read article</span>
+      </a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER (no links that are already in the main menu) ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <p class="logo"><span class="logo-mark" aria-hidden="true"></span>OTP Number <span class="logo-accent">Lab</span></p>
+        <p>Monthly tests of free virtual numbers for OTP in the US, Canada, UK and Australia.</p>
+        <p class="footer-note">Use virtual numbers responsibly.</p>
+      </div>
+      <nav aria-label="Guides on this site">
+        <p class="footer-title">Learn</p>
+        <ul>
+          <li><a href="/#platforms">Numbers by platform</a></li>
+          <li><a href="/#countries">Numbers by country</a></li>
+          <li><a href="/#public-vs-private">Public vs private numbers</a></li>
+          <li><a href="/#how-to">How to receive an OTP</a></li>
+          <li><a href="/#troubleshooting">OTP not arriving</a></li>
+          <li><a href="/#safety">Is it safe?</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Trust">
+        <p class="footer-title">Trust</p>
+        <ul>
+          <li><a href="/about/">About us</a></li>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="/privacy-policy/">Privacy Policy</a></li>
+          <li><a href="/terms/">Terms of Use</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="footer-legal">© 2026 OTP Number Lab. We are not affiliated with Telegram, WhatsApp, Meta or Google. All trademarks belong to their owners.</p>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+  <p>We use analytics cookies to see which rankings are useful. They load only if you accept. <a href="/privacy-policy/">Privacy Policy</a></p>
+  <div class="cookie-actions">
+    <button class="btn btn-secondary btn-sm" type="button" data-consent="declined">Decline</button>
+    <button class="btn btn-primary btn-sm" type="button" data-consent="accepted">Accept</button>
+  </div>
+</div>
+
+<script src="/assets/js/main.js?v=2026112402" defer></script>
+</body>
+</html>

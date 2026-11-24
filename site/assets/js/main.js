@@ -60,21 +60,28 @@
     }
   });
 
-  /* Outbound "Get number" clicks -> analytics (GA4 if consented) */
+  /* Analytics events (sent only if the visitor accepted analytics) */
+  function track(name, params) {
+    if (typeof window.gtag === 'function') window.gtag('event', name, params || {});
+  }
+
+  /* Outbound links */
   document.addEventListener('click', function (e) {
-    var link = e.target.closest('a[target="_blank"]');
-    if (!link) return;
-    var row = link.closest('[data-rank]');
-    var payload = {
-      link_url: link.href,
-      service: row ? row.querySelector('th[scope="row"] a').textContent.trim() : link.textContent.trim(),
-      sponsored: /sponsored/.test(link.rel)
-    };
-    if (typeof window.gtag === 'function') window.gtag('event', 'outbound_get_number', payload);
+    var link = e.target.closest('a[href^="http"]');
+    if (!link || link.host === window.location.host) return;
+    track('outbound_click', { link_url: link.href, link_text: link.textContent.trim().slice(0, 100) });
   });
 
+  /* Number finder (home page) */
+  var finderForm = document.getElementById('finder-form');
+  if (finderForm) {
+    finderForm.addEventListener('submit', function () {
+      track('finder_submit', { platform: finderForm.elements.platform.value, country: finderForm.elements.country.value });
+    });
+  }
+
   /* Cookie consent: analytics loads only after "Accept" (UK GDPR) */
-  var GA_ID = ''; // set the GA4 measurement ID before launch, e.g. 'G-XXXXXXXXXX'
+  var GA_ID = 'G-CN16Q36XC1'; // Google Analytics 4 measurement ID
   var CONSENT_KEY = 'otp-consent';
   var banner = document.getElementById('cookie-banner');
 
@@ -90,7 +97,7 @@
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () { window.dataLayer.push(arguments); };
     window.gtag('js', new Date());
-    window.gtag('config', GA_ID, { anonymize_ip: true });
+    window.gtag('config', GA_ID);
   }
 
   var consent = readConsent();
@@ -154,6 +161,21 @@
     Object.keys(byId).forEach(function (id) {
       var target = document.getElementById(id);
       if (target) io.observe(target);
+    });
+  }
+
+  /* Blog hub: filter cards by category (all cards stay in the HTML without JS) */
+  var chipGroup = document.querySelector('.chips');
+  if (chipGroup) {
+    chipGroup.hidden = false;
+    var chips = Array.prototype.slice.call(chipGroup.querySelectorAll('.chip'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.blog-card[data-category]'));
+    chipGroup.addEventListener('click', function (e) {
+      var chip = e.target.closest('.chip');
+      if (!chip) return;
+      var f = chip.dataset.filter;
+      chips.forEach(function (c) { var on = c === chip; c.classList.toggle('is-active', on); c.setAttribute('aria-pressed', String(on)); });
+      cards.forEach(function (card) { card.hidden = f !== 'all' && card.dataset.category !== f; });
     });
   }
 

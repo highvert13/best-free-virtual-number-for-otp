@@ -100,7 +100,8 @@ def head(title, desc, path, jsonld, robots="index, follow"):
 
 
 def header(active=None):
-    meth = ' aria-current="page"' if active == "methodology" else ""
+    def cur(key):
+        return ' aria-current="page"' if active == key else ""
     return f"""
 <header class="site-header" id="top">
   <div class="container header-inner">
@@ -114,9 +115,9 @@ def header(active=None):
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul class="nav-list">
         <li><a class="nav-link" href="/#ranking">Best Free Numbers</a></li>
-        <li><a class="nav-link" href="/#platforms">By Platform</a></li>
-        <li><a class="nav-link" href="/#countries">By Country</a></li>
-        <li><a class="nav-link" href="/methodology/"{meth}>How We Test</a></li>
+        <li><a class="nav-link" href="/blog/"{cur('blog')}>Blog</a></li>
+        <li><a class="nav-link" href="/user-reports/"{cur('user-reports')}>User Reports</a></li>
+        <li><a class="nav-link" href="/methodology/"{cur('methodology')}>How We Test</a></li>
       </ul>
       <a class="btn btn-outline-gold nav-cta" href="/#ranking">See the ranking</a>
     </nav>
@@ -156,6 +157,8 @@ def footer(current=None):
       <nav aria-label="Guides on this site">
         <p class="footer-title">Learn</p>
         <ul>
+          <li><a href="/#platforms">Numbers by platform</a></li>
+          <li><a href="/#countries">Numbers by country</a></li>
           <li><a href="/#public-vs-private">Public vs private numbers</a></li>
           <li><a href="/#how-to">How to receive an OTP</a></li>
           <li><a href="/#troubleshooting">OTP not arriving</a></li>
@@ -553,7 +556,10 @@ def build_404():
 # --------------------------------------------------------------------------
 # sitemap.xml and robots.txt
 # --------------------------------------------------------------------------
-SITEMAP_PATHS = ["/", "/methodology/", "/about/", "/contact/", "/privacy-policy/", "/terms/"]
+import blog  # noqa: E402  (blog articles, user reports page, home widgets)
+
+SITEMAP_PATHS = ["/"] + blog.sitemap_paths() + \
+                ["/user-reports/", "/methodology/", "/about/", "/contact/", "/privacy-policy/", "/terms/"]
 
 
 def build_sitemap():
@@ -566,6 +572,8 @@ def build_sitemap():
 
 
 if __name__ == "__main__":
+    import sys
+    blog.build_all(sys.modules[__name__])
     build_methodology()
     build_about()
     build_terms()
