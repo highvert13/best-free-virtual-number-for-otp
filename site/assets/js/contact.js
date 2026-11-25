@@ -2,10 +2,6 @@
 (function () {
   'use strict';
 
-  /* Contact email (the visible links are built by main.js) */
-  var src = document.querySelector('.js-email[data-user][data-domain]');
-  var email = src ? src.dataset.user + '@' + src.dataset.domain : '';
-
   /* ---------- Form ---------- */
   var form = document.getElementById('contact-form');
   if (!form) return;
@@ -114,14 +110,15 @@
       message: fieldValue('message')
     };
     var endpoint = form.dataset.endpoint;
-
-    /* No endpoint configured yet: hand the message to the visitor's email app */
-    if (!endpoint) {
-      if (!email) { setStatus('The contact form is not configured yet. Please try again later.', true); return; }
-      var body = data.message + '\n\n— ' + data.name + ' (' + data.email + ')';
-      window.location.href = 'mailto:' + email + '?subject=' + encodeURIComponent('[' + data.topic + '] Message from ' + data.name) + '&body=' + encodeURIComponent(body);
-      setStatus('Your email app should open with the message ready to send.');
+    var accessKey = form.dataset.accessKey;
+    if (!endpoint || (endpoint.indexOf('web3forms') !== -1 && !accessKey)) {
+      setStatus('The contact form is temporarily unavailable. Please try again later.', true);
       return;
+    }
+    if (accessKey) {
+      data.access_key = accessKey;
+      data.subject = '[' + data.topic + '] Message from ' + data.name;
+      data.from_name = 'OTP Number Lab contact form';
     }
 
     submitBtn.disabled = true;
@@ -136,7 +133,7 @@
       showSuccess();
       if (typeof window.gtag === 'function') window.gtag('event', 'contact_form_submit', { topic: data.topic });
     }).catch(function () {
-      setStatus('Sorry, the message could not be sent. Please email us at ' + (email || 'our contact address') + '.', true);
+      setStatus('Sorry, the message could not be sent. Please try again in a few minutes.', true);
     }).then(function () {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send message';
