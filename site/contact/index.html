@@ -84,73 +84,19 @@
   <header class="page-header">
     <div class="container">
       <h1>Contact Us</h1>
-      <p class="lead">Spotted outdated ranking data or a service we should test? Write to us. We read every message and usually reply within 2 business days.</p>
+      <p class="lead">Spotted outdated ranking data or a service we should test? Here is how to get in touch.</p>
     </div>
   </header>
 
   <div class="page-body">
     <div class="container contact-layout">
 
-      <section aria-labelledby="form-title">
-        <h2 id="form-title" class="visually-hidden">Send us a message</h2>
-
-        <!-- Delivery: Web3Forms (https://web3forms.com). Put the access key from your Web3Forms email into data-access-key. -->
-        <form class="form" id="contact-form" action="" method="post" data-endpoint="https://api.web3forms.com/submit" data-access-key="" novalidate>
-          <div class="form-row">
-            <div class="field">
-              <label for="cf-name">Name <span class="req" aria-hidden="true">*</span></label>
-              <input id="cf-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="80" aria-describedby="cf-name-error">
-              <p class="field-error" id="cf-name-error"></p>
-            </div>
-            <div class="field">
-              <label for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
-              <input id="cf-email" name="email" type="email" autocomplete="email" required maxlength="120" aria-describedby="cf-email-error">
-              <p class="field-error" id="cf-email-error"></p>
-            </div>
-          </div>
-
-          <div class="field">
-            <label for="cf-topic">Topic <span class="req" aria-hidden="true">*</span></label>
-            <select id="cf-topic" name="topic" required aria-describedby="cf-topic-error">
-              <option value="">Choose a topic</option>
-              <option value="correction">Correction to the ranking</option>
-              <option value="suggest">Suggest a service</option>
-              <option value="partnership">Partnership</option>
-              <option value="privacy">Privacy request</option>
-              <option value="other">Other</option>
-            </select>
-            <p class="field-error" id="cf-topic-error"></p>
-          </div>
-
-          <div class="field">
-            <label for="cf-message">Message <span class="req" aria-hidden="true">*</span></label>
-            <textarea id="cf-message" name="message" required minlength="20" maxlength="3000" aria-describedby="cf-message-hint cf-message-error"></textarea>
-            <p class="field-hint" id="cf-message-hint"><span>For corrections, include the service name and what you saw.</span><span><span id="cf-count">0</span> / 3000</span></p>
-            <p class="field-error" id="cf-message-error"></p>
-          </div>
-
-          <div class="hp-field" aria-hidden="true">
-            <label for="cf-website">Website</label>
-            <input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off">
-          </div>
-
-          <div class="field">
-            <label class="check" for="cf-consent">
-              <input id="cf-consent" name="consent" type="checkbox" required aria-describedby="cf-consent-error">
-              <span>I agree that my name, email and message are used to reply to me, as described in the <a href="/privacy-policy/">Privacy Policy</a>.</span>
-            </label>
-            <p class="field-error" id="cf-consent-error"></p>
-          </div>
-
-          <div class="form-actions">
-            <button class="btn btn-primary" type="submit">Send message</button>
-            <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
-          </div>
-        </form>
-
-        <div class="form-success" id="cf-success" tabindex="-1" hidden>
-          <h2>Thanks, your message is on its way</h2>
-          <p>We usually reply within 2 business days to the email address you entered.</p>
+      <section aria-labelledby="reach-title">
+        <div class="card card-feature">
+          <h2 id="reach-title">How to reach us</h2>
+          <p>Corrections to the ranking, suggestions for new services, partnership questions and privacy requests: get in touch through smsfast.com.</p>
+          <p><a class="btn btn-primary" href="https://smsfast.com/" rel="noopener" target="_blank">Go to smsfast.com <span class="ext" aria-hidden="true">↗</span></a></p>
+          <p>For a correction, include the service name, the country of the number and what you saw.</p>
         </div>
       </section>
 
@@ -160,7 +106,7 @@
           <ul class="topic-list">
             <li><strong>Corrections.</strong> A service stopped working or a price changed.</li>
             <li><strong>New services.</strong> A free number we should add to the next test cycle.</li>
-            <li><strong>Privacy requests.</strong> Access or deletion of data you sent us.</li>
+            <li><strong>Privacy requests.</strong> Questions about analytics data or cookies.</li>
           </ul>
         </div>
         <div class="card card-feature">
@@ -216,6 +162,5 @@
 </div>
 
 <script src="/assets/js/main.js?v=2026112502" defer></script>
-<script src="/assets/js/contact.js?v=2026112502" defer></script>
 </body>
 </html>
