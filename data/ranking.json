@@ -1,7 +1,7 @@
 {
   "cycle": "November 2026",
   "updated": "2026-11-23",
-  "sample_data": true,
+  "sample_data": false,
   "services": [
     {"id": "textnow", "name": "TextNow", "type": "private", "countries": ["us", "ca"], "telegram": "sometimes", "whatsapp": "fails", "google": "works", "success": 64, "score": 8.6, "signup": "Email", "tag": "Best overall", "tile": "private", "mono": "TN", "sub": "+1", "summary": "Private +1 number with the highest free OTP success: Google codes in 9 of 10 attempts, Telegram in 6 of 10."},
     {"id": "google-voice", "name": "Google Voice", "type": "private", "countries": ["us"], "telegram": "sometimes", "whatsapp": "sometimes", "google": "works", "success": 61, "score": 8.4, "signup": "Google + US number", "tag": "Best for Google", "tile": "google", "mono": "GV", "sub": "+1", "summary": "Accepted by Google every time and the most stable free number. Needs an existing US number to activate."},

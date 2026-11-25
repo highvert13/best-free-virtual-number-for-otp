@@ -171,6 +171,8 @@
       "first_review": "2026-06-23",
       "reviews_30d": 5,
       "avg_rating_30d": 4.6,
+      "verify_mentions_30d": 3,
+      "verify_negative_share_30d": 33,
       "verify_mentions": 11,
       "verify_negative_share": 18,
       "quotes": [

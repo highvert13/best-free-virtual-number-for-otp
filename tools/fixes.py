@@ -426,6 +426,21 @@ def build_user_reports(b):
             <td data-label="Code-related">{a['verify_mentions_30d']}</td>
             <td data-label="Of those, 1–2★">{f"{a['verify_negative_share']}%" if a['verify_negative_share'] is not None else '—'}</td>
           </tr>""" for a in apps)
+    for s in SITES.values():
+        neg30 = s.get("verify_negative_share_30d")
+        rows += f"""
+          <tr class="row-site">
+            <th scope="row">{s['name']}<sup>*</sup></th>
+            <td data-label="All-time rating">{s['rating_avg']}</td>
+            <td data-label="Ratings">{s['reviews_total']:,}</td>
+            <td data-label="Reviews, {REVIEWS['window_days']} days">{s['reviews_30d']}</td>
+            <td data-label="Avg, {REVIEWS['window_days']} days">{s['avg_rating_30d'] if s['avg_rating_30d'] is not None else '—'}</td>
+            <td data-label="Code-related">{s.get('verify_mentions_30d', '—')}</td>
+            <td data-label="Of those, 1–2★">{f"{neg30}%" if neg30 is not None else '—'}</td>
+          </tr>"""
+    site_note = (" <sup>*</sup> SMSFAST has no App Store app: its figures come from the reviews page on smsfast.com, "
+                 "which the service runs itself, and its “critical” share counts reviews the site marks as negative."
+                 if SITES else "")
     reports = "\n".join(app_report(a, b) for a in apps if a["quotes"])
     site_section = ""
     if SITES:
@@ -465,7 +480,7 @@ def build_user_reports(b):
           </tbody>
         </table>
       </div>
-      <p class="data-note">The recent average is usually lower than the all-time rating: people who have a problem are more likely to write a review. Compare apps with each other, not with their all-time score.</p>
+      <p class="data-note">The recent average is usually lower than the all-time rating: people who have a problem are more likely to write a review. Compare apps with each other, not with their all-time score.{site_note}</p>
     </div>
   </section>
 

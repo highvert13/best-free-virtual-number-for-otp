@@ -212,6 +212,8 @@ def summarise_site(src, today):
         "first_review": reviews[-1]["date"],
         "reviews_30d": len(recent),
         "avg_rating_30d": avg(recent),
+        "verify_mentions_30d": len(verify_30d := [r for r in verify if r["date"] >= since]),
+        "verify_negative_share_30d": round(100 * sum(r["negative"] for r in verify_30d) / len(verify_30d)) if verify_30d else None,
         "verify_mentions": len(verify),
         "verify_negative_share": round(100 * len(negative) / len(verify)) if verify else None,
         "quotes": quotes,
