@@ -27,7 +27,8 @@ APPS = [
 STORES = {"us": "US", "ca": "Canada", "gb": "UK", "au": "Australia"}
 PAGES = 3                      # 50 reviews per page, most recent first
 WINDOW_DAYS = 30
-UA = {"User-Agent": "otp-number-lab-reviews/1.0"}
+# Apple returns empty feeds to clients without a "Mozilla/5.0" prefix.
+UA = {"User-Agent": "Mozilla/5.0 (compatible; otp-number-lab-reviews/1.0)", "Accept": "application/json"}
 
 # A review "mentions verification" if it talks about codes, OTP or signing in to another app.
 VERIFY_RE = re.compile(
@@ -46,16 +47,29 @@ def get_json(url, retries=2):
             time.sleep(2)
 
 
+def feed_entries(url):
+    entries = (get_json(url) or {}).get("feed", {}).get("entry", [])
+    return [entries] if isinstance(entries, dict) else entries
+
+
 def fetch_reviews(app_id, store):
-    reviews = []
+    reviews, seen = [], set()
     for page in range(1, PAGES + 1):
-        data = get_json(f"https://itunes.apple.com/{store}/rss/customerreviews/page={page}/id={app_id}/sortby=mostrecent/json")
-        entries = (data or {}).get("feed", {}).get("entry", [])
-        if isinstance(entries, dict):
-            entries = [entries]
+        entries = feed_entries(f"https://itunes.apple.com/{store}/rss/customerreviews/page={page}/id={app_id}/sortby=mostrecent/json")
+        # Apple sometimes returns an empty first page; retry, alternating with the
+        # plain feed, which lists the same 50 newest reviews.
+        for attempt in range(4 if page == 1 else 0):
+            if entries:
+                break
+            time.sleep(2 + attempt * 2)
+            url = (f"https://itunes.apple.com/{store}/rss/customerreviews/id={app_id}/json" if attempt % 2 == 0 else
+                   f"https://itunes.apple.com/{store}/rss/customerreviews/page=1/id={app_id}/sortby=mostrecent/json")
+            entries = feed_entries(url)
         for e in entries:
-            if "im:rating" not in e:
+            rid = e.get("id", {}).get("label")
+            if "im:rating" not in e or rid in seen:
                 continue
+            seen.add(rid)
             reviews.append({
                 "date": e["updated"]["label"][:10],
                 "rating": int(e["im:rating"]["label"]),
@@ -141,14 +155,92 @@ def summarise(app, today):
     }
 
 
+# --------------------------------------------------------------------------
+# Reviews published on a service's own website (web-only services, no App Store app).
+# SMSFAST exposes its public review list as JSON: 15 reviews per page.
+# --------------------------------------------------------------------------
+SITE_SOURCES = [
+    {"id": "smsfast", "name": "SMSFAST", "page": "https://smsfast.com/reviews",
+     "api": "https://backend.smsfast.com/api/reviews?page={page}"},
+]
+ENGLISH_RE = re.compile(r"\b(the|and|it|is|for|i|was|but|to|my|not)\b", re.I)
+
+
+def is_english(text):
+    return len(ENGLISH_RE.findall(text)) >= 3 and sum(ord(c) < 128 for c in text) / max(len(text), 1) > 0.95
+
+
+def summarise_site(src, today):
+    first = get_json(src["api"].format(page=1))
+    if not first or "reviews" not in first:
+        return None
+    rows = list(first["reviews"]["data"])
+    for page in range(2, first["reviews"]["meta"]["last_page"] + 1):
+        data = get_json(src["api"].format(page=page))
+        rows += (data or {}).get("reviews", {}).get("data", [])
+        time.sleep(0.5)
+    reviews = [{"date": r["published_at"][:10], "rating": int(r["rating"]), "title": (r.get("title") or "").strip(),
+                "text": (r.get("text") or "").strip(), "negative": r.get("type") == "negative" or int(r["rating"]) <= 2}
+               for r in rows if r.get("status", "published") == "published"]
+    reviews.sort(key=lambda r: r["date"], reverse=True)
+    if not reviews:
+        return None
+
+    since = (today - dt.timedelta(days=WINDOW_DAYS)).isoformat()
+    recent = [r for r in reviews if r["date"] >= since]
+    verify = [r for r in reviews if VERIFY_RE.search(r["title"] + " " + r["text"])]
+    negative = [r for r in verify if r["negative"]]
+    positive = [r for r in verify if not r["negative"] and r["rating"] >= 4]
+
+    quotes = []
+    for pool in (negative, positive):
+        pool = [r for r in pool if quotable(r) and is_english(r["title"] + " " + r["text"])]
+        if pool:
+            r = pool[0]
+            quotes.append({"date": r["date"], "rating": r["rating"], "title": excerpt(r["title"], 70), "text": excerpt(r["text"])})
+
+    def avg(rs):
+        return round(sum(r["rating"] for r in rs) / len(rs), 1) if rs else None
+
+    dist = {n: sum(1 for r in reviews if r["rating"] == n) for n in range(5, 0, -1)}
+    return {
+        "id": src["id"], "name": src["name"], "source_url": src["page"],
+        "reviews_total": len(reviews),
+        "rating_avg": avg(reviews),
+        "negative_count": sum(1 for r in reviews if r["negative"]),
+        "distribution": {str(k): v for k, v in dist.items()},
+        "first_review": reviews[-1]["date"],
+        "reviews_30d": len(recent),
+        "avg_rating_30d": avg(recent),
+        "verify_mentions": len(verify),
+        "verify_negative_share": round(100 * len(negative) / len(verify)) if verify else None,
+        "quotes": quotes,
+    }
+
+
 def main():
     today = dt.date.today()
+    previous = json.loads(OUT.read_text(encoding="utf-8-sig")) if OUT.exists() else {}
+    old_apps = {a["id"]: a for a in previous.get("apps", [])}
     apps = []
     for app in APPS:
-        apps.append(summarise(app, today))
+        s = summarise(app, today)
+        old = old_apps.get(app["id"])
+        if s["reviews_30d"] == 0 and old and old["reviews_30d"] > 0:
+            s = old   # an empty feed is almost always an Apple outage, not a month without reviews
+            print(f"{app['name']}: feed empty, kept previous data")
+        apps.append(s)
         print(f"{app['name']}: {apps[-1]['reviews_30d']} reviews, {apps[-1]['verify_mentions_30d']} mention codes")
+    old_sites = {s["id"]: s for s in previous.get("sites", [])}
+    sites = []
+    for src in SITE_SOURCES:
+        s = summarise_site(src, today) or old_sites.get(src["id"])   # keep yesterday's data if the site is down
+        if s:
+            sites.append(s)
+            print(f"{src['name']} (own site): {s['reviews_total']} reviews, avg {s['rating_avg']}")
     OUT.write_text(json.dumps({"updated": today.isoformat(), "window_days": WINDOW_DAYS,
-                               "stores": list(STORES.values()), "apps": apps}, ensure_ascii=False, indent=2) + "\n",
+                               "stores": list(STORES.values()), "apps": apps, "sites": sites},
+                              ensure_ascii=False, indent=2) + "\n",
                    encoding="utf-8", newline="\n")
     print("wrote", OUT.relative_to(ROOT))
 

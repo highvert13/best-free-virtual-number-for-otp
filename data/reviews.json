@@ -13,42 +13,58 @@
       "name": "TextNow",
       "app_id": 314716233,
       "rating_all_time": 4.8,
-      "ratings_count": 930341,
-      "reviews_30d": 0,
-      "avg_rating_30d": null,
-      "verify_mentions_30d": 0,
-      "verify_negative_share": null,
-      "verify_avg_rating_30d": null,
+      "ratings_count": 930432,
+      "reviews_30d": 170,
+      "avg_rating_30d": 2.6,
+      "verify_mentions_30d": 22,
+      "verify_negative_share": 91,
+      "verify_avg_rating_30d": 1.4,
       "themes_30d": {
-        "codes": 0,
-        "ads": 0,
-        "number_lost": 0,
-        "account_blocked": 0,
-        "call_quality": 0,
-        "pricing": 0
+        "codes": 22,
+        "ads": 11,
+        "number_lost": 3,
+        "account_blocked": 2,
+        "call_quality": 3,
+        "pricing": 26
       },
-      "quotes": []
+      "quotes": [
+        {
+          "date": "2026-11-22",
+          "rating": 2,
+          "store": "US",
+          "title": "Pls fix",
+          "text": "I would love it if you could reply to messages and also it’s keep telling me to verify my account"
+        }
+      ]
     },
     {
       "id": "google-voice",
       "name": "Google Voice",
       "app_id": 318698524,
       "rating_all_time": 4.3,
-      "ratings_count": 62015,
-      "reviews_30d": 0,
-      "avg_rating_30d": null,
-      "verify_mentions_30d": 0,
-      "verify_negative_share": null,
-      "verify_avg_rating_30d": null,
+      "ratings_count": 62014,
+      "reviews_30d": 48,
+      "avg_rating_30d": 2.0,
+      "verify_mentions_30d": 5,
+      "verify_negative_share": 80,
+      "verify_avg_rating_30d": 1.6,
       "themes_30d": {
-        "codes": 0,
+        "codes": 5,
         "ads": 0,
         "number_lost": 0,
-        "account_blocked": 0,
-        "call_quality": 0,
-        "pricing": 0
+        "account_blocked": 1,
+        "call_quality": 1,
+        "pricing": 2
       },
-      "quotes": []
+      "quotes": [
+        {
+          "date": "2026-11-20",
+          "rating": 2,
+          "store": "US",
+          "title": "Was good until now",
+          "text": "Was good until they started requiring ID verification to verify you before you can continue using it. Deleting it now."
+        }
+      ]
     },
     {
       "id": "talkatone",
@@ -56,62 +72,121 @@
       "app_id": 397648381,
       "rating_all_time": 4.7,
       "ratings_count": 142834,
-      "reviews_30d": 0,
-      "avg_rating_30d": null,
-      "verify_mentions_30d": 0,
-      "verify_negative_share": null,
-      "verify_avg_rating_30d": null,
+      "reviews_30d": 24,
+      "avg_rating_30d": 2.0,
+      "verify_mentions_30d": 2,
+      "verify_negative_share": 100,
+      "verify_avg_rating_30d": 1.5,
       "themes_30d": {
-        "codes": 0,
-        "ads": 0,
+        "codes": 2,
+        "ads": 4,
         "number_lost": 0,
         "account_blocked": 0,
         "call_quality": 0,
-        "pricing": 0
+        "pricing": 9
       },
-      "quotes": []
+      "quotes": [
+        {
+          "date": "2026-11-15",
+          "rating": 1,
+          "store": "US",
+          "title": "Garbage app",
+          "text": "Trash garbage app. Incompetent devs, telling me too many login attempts while trying to sign up. Absolute waste of my time. I'm sorry, I do not have the patience to deal…"
+        }
+      ]
     },
     {
       "id": "textfree",
       "name": "TextFree",
       "app_id": 399355755,
       "rating_all_time": 4.7,
-      "ratings_count": 616086,
-      "reviews_30d": 0,
-      "avg_rating_30d": null,
-      "verify_mentions_30d": 0,
-      "verify_negative_share": null,
-      "verify_avg_rating_30d": null,
+      "ratings_count": 615992,
+      "reviews_30d": 52,
+      "avg_rating_30d": 2.3,
+      "verify_mentions_30d": 8,
+      "verify_negative_share": 62,
+      "verify_avg_rating_30d": 2.0,
       "themes_30d": {
-        "codes": 0,
-        "ads": 0,
+        "codes": 8,
+        "ads": 8,
         "number_lost": 0,
         "account_blocked": 0,
-        "call_quality": 0,
-        "pricing": 0
+        "call_quality": 3,
+        "pricing": 10
       },
-      "quotes": []
+      "quotes": [
+        {
+          "date": "2026-11-22",
+          "rating": 1,
+          "store": "US",
+          "title": "Needs some work",
+          "text": "I did pay for it for $1 for a week that was pretty good and when you allowed users to watch ads to get the code was actually useful now its just useless and at this…"
+        },
+        {
+          "date": "2026-10-28",
+          "rating": 5,
+          "store": "US",
+          "title": "Too much money",
+          "text": "To much money just to get codes make it free"
+        }
+      ]
     },
     {
       "id": "nextplus",
       "name": "Nextplus",
       "app_id": 920869470,
       "rating_all_time": 4.6,
-      "ratings_count": 89409,
-      "reviews_30d": 0,
-      "avg_rating_30d": null,
+      "ratings_count": 89410,
+      "reviews_30d": 5,
+      "avg_rating_30d": 2.6,
       "verify_mentions_30d": 0,
       "verify_negative_share": null,
       "verify_avg_rating_30d": null,
       "themes_30d": {
         "codes": 0,
-        "ads": 0,
+        "ads": 1,
         "number_lost": 0,
         "account_blocked": 0,
         "call_quality": 0,
         "pricing": 0
       },
       "quotes": []
+    }
+  ],
+  "sites": [
+    {
+      "id": "smsfast",
+      "name": "SMSFAST",
+      "source_url": "https://smsfast.com/reviews",
+      "reviews_total": 32,
+      "rating_avg": 4.2,
+      "negative_count": 6,
+      "distribution": {
+        "5": 20,
+        "4": 4,
+        "3": 4,
+        "2": 2,
+        "1": 2
+      },
+      "first_review": "2026-06-23",
+      "reviews_30d": 5,
+      "avg_rating_30d": 4.6,
+      "verify_mentions": 11,
+      "verify_negative_share": 18,
+      "quotes": [
+        {
+          "date": "2026-11-16",
+          "rating": 3,
+          "title": "idk idk idk",
+          "text": "codes dont come half the time and its annoying af. support told me to use a vpn but it makes my internet slow as hell so idk. maybe its just me but sometimes the codes…"
+        },
+        {
+          "date": "2026-11-16",
+          "rating": 5,
+          "title": "Honestly not a bad service for sms verif",
+          "text": "I purchased a number for the service, since for some reason the code isnt arriving in my country, and I successfully received the sms. Of course it wasnt on the first…"
+        }
+      ]
     }
   ]
 }

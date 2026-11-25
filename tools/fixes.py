@@ -241,6 +241,34 @@ def app_report(app, b, heading_level="h3"):
       </div>"""
 
 
+SITES = {s["id"]: s for s in REVIEWS.get("sites", [])}
+
+
+def site_report(site, b):
+    """Reviews a web-only service publishes on its own website."""
+    if not site:
+        return ""
+    total = site["reviews_total"]
+    dist = " · ".join(f"{k}★ {site['distribution'][k]}" for k in ("5", "4", "3", "2", "1"))
+    neg = site["verify_negative_share"]
+    quotes = "\n".join(f"""        <figure class="review-quote">
+          <figcaption>{stars(q['rating'])} <span>smsfast.com · {short_date(q['date'])}</span></figcaption>
+          <blockquote><p><strong>{b.e(q['title'])}</strong> {b.e(q['text'])}</p></blockquote>
+        </figure>""" for q in site["quotes"])
+    return f"""      <div class="card card-feature app-report">
+        <h3>{site['name']}: what users report</h3>
+        <dl class="report-stats">
+          <div><dt>Rating on its site</dt><dd>{site['rating_avg']}</dd></div>
+          <div><dt>Reviews</dt><dd>{total}</dd></div>
+          <div><dt>Last {REVIEWS['window_days']} days</dt><dd>{site['reviews_30d']}</dd></div>
+          <div><dt>Critical reviews</dt><dd>{site['negative_count']}</dd></div>
+        </dl>
+        <p>{site['verify_mentions']} of {total} reviews mention codes, verification or a specific app{f", and {neg}% of those are critical." if neg is not None else "."} Ratings: {dist}.</p>
+{quotes}
+        <p class="data-note">Source: <a href="{site['source_url']}" rel="noopener" target="_blank">reviews page on smsfast.com</a>, since {human_date(site['first_review'])}. Each review is marked as from a buyer; the page is run and moderated by the service itself, so the numbers are not comparable with App Store data.</p>
+      </div>"""
+
+
 def reviews_source_note():
     return (f'<p class="data-note">Data: public Apple App Store reviews from the US, Canada, UK and Australia stores, '
             f'refreshed daily. Last update: <time datetime="{REVIEWS["updated"]}">{human_date(REVIEWS["updated"])}</time>. '
@@ -399,16 +427,28 @@ def build_user_reports(b):
             <td data-label="Of those, 1–2★">{f"{a['verify_negative_share']}%" if a['verify_negative_share'] is not None else '—'}</td>
           </tr>""" for a in apps)
     reports = "\n".join(app_report(a, b) for a in apps if a["quotes"])
+    site_section = ""
+    if SITES:
+        site_section = f"""
+  <section class="band" id="web-services" aria-labelledby="web-title">
+    <div class="container container-narrow">
+      <p class="eyebrow">Web services</p>
+      <h2 id="web-title">Reviews on the Service's Own Website</h2>
+      <p>Web-based services have no App Store page, so we read the reviews they publish themselves.</p>
+{chr(10).join(site_report(s, b) for s in SITES.values())}
+    </div>
+  </section>
+"""
     jsonld = b.ld_base(path, "User Reports", page_type="WebPage")
     body = f"""{b.head("Free Number App Reviews: What Users Say About Codes",
-                     "Daily summary of App Store reviews for TextNow, Google Voice, Talkatone, TextFree and Nextplus: ratings and what users say about verification codes.",
+                     "Daily summary of reviews for TextNow, Google Voice, Talkatone, TextFree, Nextplus and SMSFAST: ratings and what users say about verification codes.",
                      path, jsonld)}{b.header('user-reports')}{b.breadcrumbs('User Reports')}
 <main id="main">
   <header class="page-header">
     <div class="container">
       <p class="eyebrow">User reports · updated daily</p>
       <h1>What App Store Users Say About Free Number Apps</h1>
-      <p class="lead">We read the latest App Store reviews of the most popular free number apps every day and count how many talk about verification codes. It is the fastest way to spot when an app stops receiving codes.</p>
+      <p class="lead">We read the latest App Store reviews of the most popular free number apps every day and count how many talk about verification codes. It is the fastest way to spot when an app stops receiving codes. For web services without an app, we summarise the reviews they publish on their own site.</p>
       <p class="page-meta">Last update: <time datetime="{REVIEWS['updated']}">{human_date(REVIEWS['updated'])}</time> · Stores: US, Canada, UK, Australia</p>
     </div>
   </header>
@@ -425,7 +465,7 @@ def build_user_reports(b):
           </tbody>
         </table>
       </div>
-      <p class="data-note">The recent average is lower than the all-time rating for every app: people who have a problem are more likely to write a review. Compare apps with each other, not with their all-time score.</p>
+      <p class="data-note">The recent average is usually lower than the all-time rating: people who have a problem are more likely to write a review. Compare apps with each other, not with their all-time score.</p>
     </div>
   </section>
 
@@ -436,17 +476,18 @@ def build_user_reports(b):
 {reports}
     </div>
   </section>
-
-  <section class="band" id="method" aria-labelledby="method-title">
+{site_section}
+  <section class="band{' band-soft' if SITES else ''}" id="method" aria-labelledby="method-title">
     <div class="container container-narrow">
       <p class="eyebrow">Method</p>
       <h2 id="method-title">How We Count</h2>
       <ul>
-        <li><strong>Source:</strong> the public Apple App Store review feed for each app, in the US, Canadian, UK and Australian stores. Up to 150 of the newest reviews per store are read every day.</li>
+        <li><strong>Source:</strong> the public Apple App Store review feed for each app, in the US, Canadian, UK and Australian stores. Up to 150 of the newest reviews per store are read every day. If the feed is temporarily empty, the previous day's figures are kept.</li>
         <li><strong>Window:</strong> only reviews from the last {REVIEWS['window_days']} days are counted.</li>
         <li><strong>Code-related:</strong> the title or text mentions codes, verification, OTP, 2FA, sign-up, log-in, WhatsApp, Telegram or a Google account.</li>
         <li><strong>Quotes:</strong> the newest negative and positive code-related review, shortened. Reviewer names, reviews with personal details and reviews written by children are never shown.</li>
-        <li><strong>Which services:</strong> only services in our ranking that have an iPhone app in the App Store. Web-based services and public receive-SMS websites have no App Store reviews, so they are not listed here.</li>
+        <li><strong>Which services:</strong> services in our ranking that have an iPhone app in the App Store. Web-based services have no App Store reviews; where a service publishes buyer reviews on its own website, we show those separately and never mix them into the App Store figures. Public receive-SMS websites have no reviews to read.</li>
+        <li><strong>Critical:</strong> for App Store reviews, 1–2 stars; for reviews on a service's own site, the reviews that site marks as negative or that give 1–2 stars.</li>
         <li><strong>Limits:</strong> App Store reviews are a small, self-selected sample and do not prove that an app works or fails for you. Google Play reviews are not included.</li>
       </ul>
     </div>
@@ -468,12 +509,19 @@ def home_reports_block(b):
           <p class="mini-figure">{a['verify_mentions_30d']}<span> code-related reviews</span></p>
           <p>{f"{neg}% of them are 1–2 stars." if neg is not None else "No code-related reviews this month."} Recent average {a['avg_rating_30d']} vs {a['rating_all_time']} all-time.</p>
         </article>""")
+    for s in SITES.values():
+        cards.append(f"""        <article class="card card-feature mini-report">
+          <h3>{s['name']}</h3>
+          <p class="mini-figure">{s['rating_avg']}<span> rating on its own site</span></p>
+          <p>{s['reviews_total']} buyer reviews on smsfast.com, {s['negative_count']} of them critical. {s['verify_mentions']} mention codes or verification.</p>
+        </article>""")
+    grid = "grid-4" if len(cards) == 4 else "grid-3"
     return f"""<section class="band band-soft" id="user-reports" aria-labelledby="reports-title">
   <div class="container">
     <p class="eyebrow">User reports · updated daily</p>
-    <h2 id="reports-title">What App Store Users Say About Codes This Month</h2>
-    <p class="section-intro">Every day we read the newest App Store reviews of free number apps in the US, Canada, UK and Australia and count how many complain about verification codes.</p>
-    <div class="grid grid-3">
+    <h2 id="reports-title">What Users Say About Codes This Month</h2>
+    <p class="section-intro">Every day we read the newest App Store reviews of free number apps in the US, Canada, UK and Australia, plus the reviews web services publish on their own sites, and count how many talk about verification codes.</p>
+    <div class="grid {grid}">
 {chr(10).join(cards)}
     </div>
     <p class="data-note">Last update: <time datetime="{REVIEWS['updated']}">{human_date(REVIEWS['updated'])}</time>. <a href="/user-reports/">See all apps and recent reviews</a></p>
