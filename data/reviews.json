@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "window_days": 30,
   "stores": [
     "US",
@@ -136,7 +136,7 @@
       "name": "Nextplus",
       "app_id": 920869470,
       "rating_all_time": 4.6,
-      "ratings_count": 89410,
+      "ratings_count": 89408,
       "reviews_30d": 5,
       "avg_rating_30d": 2.6,
       "verify_mentions_30d": 0,
