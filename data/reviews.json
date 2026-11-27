@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26",
+  "updated": "2026-11-27",
   "window_days": 30,
   "stores": [
     "US",
@@ -13,27 +13,34 @@
       "name": "TextNow",
       "app_id": 314716233,
       "rating_all_time": 4.8,
-      "ratings_count": 930432,
-      "reviews_30d": 170,
-      "avg_rating_30d": 2.6,
-      "verify_mentions_30d": 22,
-      "verify_negative_share": 91,
-      "verify_avg_rating_30d": 1.4,
+      "ratings_count": 930758,
+      "reviews_30d": 120,
+      "avg_rating_30d": 2.5,
+      "verify_mentions_30d": 17,
+      "verify_negative_share": 76,
+      "verify_avg_rating_30d": 1.8,
       "themes_30d": {
-        "codes": 22,
-        "ads": 11,
-        "number_lost": 3,
+        "codes": 17,
+        "ads": 8,
+        "number_lost": 2,
         "account_blocked": 2,
         "call_quality": 3,
-        "pricing": 26
+        "pricing": 19
       },
       "quotes": [
         {
-          "date": "2026-11-22",
-          "rating": 2,
+          "date": "2026-11-24",
+          "rating": 1,
+          "store": "Canada",
+          "title": "I couldn’t even enter my birthday to get started",
+          "text": "I gave my data to the app and proceeded to confirm my age. Then I ran into a bot detection error code and I couldn’t use the app at all."
+        },
+        {
+          "date": "2026-11-24",
+          "rating": 5,
           "store": "US",
-          "title": "Pls fix",
-          "text": "I would love it if you could reply to messages and also it’s keep telling me to verify my account"
+          "title": "So far so good",
+          "text": "It had been a great apl besides the constant need to lock number in it should be once also i never got to use my esim and i paid for it it was supposed to be a one time…"
         }
       ]
     },
@@ -42,29 +49,21 @@
       "name": "Google Voice",
       "app_id": 318698524,
       "rating_all_time": 4.3,
-      "ratings_count": 62014,
-      "reviews_30d": 48,
-      "avg_rating_30d": 2.0,
-      "verify_mentions_30d": 5,
-      "verify_negative_share": 80,
-      "verify_avg_rating_30d": 1.6,
+      "ratings_count": 62018,
+      "reviews_30d": 1,
+      "avg_rating_30d": 1.0,
+      "verify_mentions_30d": 0,
+      "verify_negative_share": null,
+      "verify_avg_rating_30d": null,
       "themes_30d": {
-        "codes": 5,
+        "codes": 0,
         "ads": 0,
         "number_lost": 0,
-        "account_blocked": 1,
-        "call_quality": 1,
-        "pricing": 2
+        "account_blocked": 0,
+        "call_quality": 0,
+        "pricing": 0
       },
-      "quotes": [
-        {
-          "date": "2026-11-20",
-          "rating": 2,
-          "store": "US",
-          "title": "Was good until now",
-          "text": "Was good until they started requiring ID verification to verify you before you can continue using it. Deleting it now."
-        }
-      ]
+      "quotes": []
     },
     {
       "id": "talkatone",
@@ -100,27 +99,27 @@
       "name": "TextFree",
       "app_id": 399355755,
       "rating_all_time": 4.7,
-      "ratings_count": 615992,
-      "reviews_30d": 52,
-      "avg_rating_30d": 2.3,
-      "verify_mentions_30d": 8,
-      "verify_negative_share": 62,
-      "verify_avg_rating_30d": 2.0,
+      "ratings_count": 616419,
+      "reviews_30d": 48,
+      "avg_rating_30d": 2.8,
+      "verify_mentions_30d": 10,
+      "verify_negative_share": 70,
+      "verify_avg_rating_30d": 1.8,
       "themes_30d": {
-        "codes": 8,
-        "ads": 8,
+        "codes": 10,
+        "ads": 7,
         "number_lost": 0,
         "account_blocked": 0,
-        "call_quality": 3,
-        "pricing": 10
+        "call_quality": 1,
+        "pricing": 8
       },
       "quotes": [
         {
-          "date": "2026-11-22",
+          "date": "2026-11-24",
           "rating": 1,
           "store": "US",
-          "title": "Needs some work",
-          "text": "I did pay for it for $1 for a week that was pretty good and when you allowed users to watch ads to get the code was actually useful now its just useless and at this…"
+          "title": "Not free for verification",
+          "text": "You have to pay for text verification messages."
         },
         {
           "date": "2026-10-28",
