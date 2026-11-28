@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27",
+  "updated": "2026-11-28",
   "window_days": 30,
   "stores": [
     "US",
@@ -99,18 +99,18 @@
       "name": "TextFree",
       "app_id": 399355755,
       "rating_all_time": 4.7,
-      "ratings_count": 616419,
-      "reviews_30d": 48,
+      "ratings_count": 616539,
+      "reviews_30d": 47,
       "avg_rating_30d": 2.8,
-      "verify_mentions_30d": 10,
-      "verify_negative_share": 70,
-      "verify_avg_rating_30d": 1.8,
+      "verify_mentions_30d": 9,
+      "verify_negative_share": 78,
+      "verify_avg_rating_30d": 1.4,
       "themes_30d": {
-        "codes": 10,
-        "ads": 7,
+        "codes": 9,
+        "ads": 8,
         "number_lost": 0,
         "account_blocked": 0,
-        "call_quality": 1,
+        "call_quality": 0,
         "pricing": 8
       },
       "quotes": [
@@ -120,13 +120,6 @@
           "store": "US",
           "title": "Not free for verification",
           "text": "You have to pay for text verification messages."
-        },
-        {
-          "date": "2026-10-28",
-          "rating": 5,
-          "store": "US",
-          "title": "Too much money",
-          "text": "To much money just to get codes make it free"
         }
       ]
     },
